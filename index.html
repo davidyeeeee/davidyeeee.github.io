@@ -3,145 +3,590 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Simple GitHub Page</title>
+    <title>Academic Blog | Student at HKU</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-blue: #2c4f6e;
+            --secondary-green: #4a7163;
+            --accent-gold: #b89d5a;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #333333;
+            --text-color: #444444;
+            --white: #ffffff;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+            --border-radius: 4px;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            color: var(--text-color);
+            background-color: var(--white);
         }
-        
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Lora', serif;
+            font-weight: 500;
+            color: var(--dark-gray);
+            margin-bottom: var(--spacing-sm);
         }
-        
+
         h1 {
-            color: #2c3e50;
-            margin-bottom: 10px;
+            font-size: 2.5rem;
+            line-height: 1.2;
         }
-        
-        .tagline {
-            color: #7f8c8d;
-            font-size: 1.2rem;
-        }
-        
-        section {
-            background-color: #fff;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
+
         h2 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 5px;
-        }
-        
-        ul {
-            list-style-type: none;
-        }
-        
-        li {
-            margin-bottom: 8px;
-            padding-left: 20px;
+            font-size: 2rem;
+            margin-bottom: var(--spacing-md);
             position: relative;
         }
-        
-        li:before {
-            content: "•";
-            color: #3498db;
+
+        h2::after {
+            content: '';
             position: absolute;
+            bottom: -8px;
             left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-gold);
         }
-        
-        .project {
-            margin-bottom: 15px;
-            padding: 10px;
-            border-left: 3px solid #3498db;
-            background-color: #f8f9fa;
+
+        p {
+            margin-bottom: var(--spacing-sm);
         }
-        
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            padding: 20px;
-            color: #7f8c8d;
-            font-size: 0.9rem;
-        }
-        
+
         a {
-            color: #3498db;
             text-decoration: none;
+            color: var(--primary-blue);
+            transition: color 0.3s ease;
         }
-        
+
         a:hover {
-            text-decoration: underline;
+            color: var(--secondary-green);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            padding: var(--spacing-sm) 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Lora', serif;
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: var(--primary-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: var(--spacing-md);
+        }
+
+        .nav-links a {
+            color: var(--dark-gray);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-gray);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--light-gray);
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-color);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero .status {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Section Styling */
+        section {
+            padding: var(--spacing-lg) 0;
+        }
+
+        section:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-img {
+            height: 180px;
+            background-color: var(--medium-gray);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-content {
+            padding: var(--spacing-md);
+        }
+
+        .card h3 {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .card-meta {
+            font-size: 0.875rem;
+            color: var(--text-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+            margin-top: var(--spacing-sm);
+        }
+
+        .tag {
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: var(--spacing-lg) 0;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .copyright {
+            font-size: 0.875rem;
+            color: var(--medium-gray);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: var(--spacing-md);
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: var(--spacing-xs) 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: var(--spacing-lg) 0;
+            }
+
+            section {
+                padding: var(--spacing-md) 0;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>John Doe</h1>
-        <p class="tagline">Web Developer & Designer</p>
-    </header>
-    
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Hello! I'm a web developer passionate about creating clean, functional websites. I enjoy working with HTML, CSS, and JavaScript to bring ideas to life.</p>
-    </section>
-    
-    <section id="projects">
-        <h2>My Projects</h2>
-        <div class="project">
-            <h3>Personal Portfolio</h3>
-            <p>A responsive portfolio website built with HTML and CSS.</p>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">Academic Blog</a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#exchange">Exchange</a></li>
+                <li><a href="#thoughts">Thoughts</a></li>
+                <li><a href="#learning">Learning</a></li>
+            </ul>
         </div>
-        <div class="project">
-            <h3>Task Manager</h3>
-            <p>A simple JavaScript application for managing daily tasks.</p>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Hello, I'm Alex Chen</h1>
+            <span class="status">Student at HKU</span>
+            <p>Exploring the intersections of sociology, technology, and urban studies through research and writing.</p>
         </div>
-        <div class="project">
-            <h3>Weather App</h3>
-            <p>A web app that displays current weather using a public API.</p>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research">
+        <div class="container">
+            <h2 class="section-title">Research</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-img" style="background-color: #2c4f6e;"></div>
+                    <div class="card-content">
+                        <h3>Urban Gentrification in Hong Kong</h3>
+                        <p class="card-meta">Ongoing | Supervisor: Dr. Li Wei</p>
+                        <p>Examining the socioeconomic impacts of urban renewal projects in traditional neighborhoods.</p>
+                        <div class="card-tags">
+                            <span class="tag">Sociology</span>
+                            <span class="tag">Urban Studies</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img" style="background-color: #4a7163;"></div>
+                    <div class="card-content">
+                        <h3>Digital Literacy Among Elderly Populations</h3>
+                        <p class="card-meta">Completed | Published in HKU Journal</p>
+                        <p>Investigating barriers to technology adoption and proposing community-based solutions.</p>
+                        <div class="card-tags">
+                            <span class="tag">Digital Sociology</span>
+                            <span class="tag">Aging Studies</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img" style="background-color: #b89d5a;"></div>
+                    <div class="card-content">
+                        <h3>Social Networks of University Students</h3>
+                        <p class="card-meta">In Progress | Expected completion: Dec 2023</p>
+                        <p>Mapping friendship formations and their impact on academic performance and wellbeing.</p>
+                        <div class="card-tags">
+                            <span class="tag">Network Analysis</span>
+                            <span class="tag">Education</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-    
-    <section id="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>HTML & CSS</li>
-            <li>JavaScript</li>
-            <li>Responsive Design</li>
-            <li>Git & GitHub</li>
-        </ul>
+
+    <!-- Exchange Experiences -->
+    <section id="exchange">
+        <div class="container">
+            <h2 class="section-title">Exchange Experiences</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-img" style="background-color: #4a7163;"></div>
+                    <div class="card-content">
+                        <h3>First Impressions: Arriving in Copenhagen</h3>
+                        <p class="card-meta">September 15, 2023</p>
+                        <p>Navigating a new academic system and discovering the Danish concept of 'hygge'.</p>
+                        <div class="card-tags">
+                            <span class="tag">Denmark</span>
+                            <span class="tag">Cultural Adaptation</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img" style="background-color: #2c4f6e;"></div>
+                    <div class="card-content">
+                        <h3>Academic Differences: European vs. Asian Approaches</h3>
+                        <p class="card-meta">October 3, 2023</p>
+                        <p>Observations on classroom dynamics, assessment methods, and student-teacher relationships.</p>
+                        <div class="card-tags">
+                            <span class="tag">Education</span>
+                            <span class="tag">Comparative Studies</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img" style="background-color: #b89d5a;"></div>
+                    <div class="card-content">
+                        <h3>Weekend Trip to Malmö</h3>
+                        <p class="card-meta">October 22, 2023</p>
+                        <p>Exploring Swedish urban design and sustainable city planning across the Øresund Bridge.</p>
+                        <div class="card-tags">
+                            <span class="tag">Travel</span>
+                            <span class="tag">Urban Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-    
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:john.doe@example.com">john.doe@example.com</a></p>
-        <p>GitHub: <a href="https://github.com/johndoe" target="_blank">github.com/johndoe</a></p>
+
+    <!-- Personal Thoughts -->
+    <section id="thoughts">
+        <div class="container">
+            <h2 class="section-title">Personal Thoughts</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-img" style="background-color: #b89d5a;"></div>
+                    <div class="card-content">
+                        <h3>On Finding Balance in Academia</h3>
+                        <p class="card-meta">August 10, 2023</p>
+                        <p>Reflections on maintaining mental health and personal relationships while pursuing academic excellence.</p>
+                        <div class="card-tags">
+                            <span class="tag">Wellbeing</span>
+                            <span class="tag">Reflection</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img" style="background-color: #4a7163;"></div>
+                    <div class="card-content">
+                        <h3>The Books That Shaped My Thinking</h3>
+                        <p class="card-meta">July 22, 2023</p>
+                        <p>A personal reading list of influential texts across sociology, philosophy, and fiction.</p>
+                        <div class="card-tags">
+                            <span class="tag">Reading</span>
+                            <span class="tag">Intellectual Development</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img" style="background-color: #2c4f6e;"></div>
+                    <div class="card-content">
+                        <h3>Why I Chose Sociology</h3>
+                        <p class="card-meta">June 5, 2023</p>
+                        <p>Personal journey from engineering to social sciences and finding my academic home.</p>
+                        <div class="card-tags">
+                            <span class="tag">Academic Journey</span>
+                            <span class="tag">Career</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-    
+
+    <!-- Learning -->
+    <section id="learning">
+        <div class="container">
+            <h2 class="section-title">Learning</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-img" style="background-color: #2c4f6e;"></div>
+                    <div class="card-content">
+                        <h3>Sociological Theory: Key Concepts</h3>
+                        <p class="card-meta">SOC101 | Updated: October 2023</p>
+                        <p>Comprehensive notes on classical and contemporary sociological theories with real-world applications.</p>
+                        <div class="card-tags">
+                            <span class="tag">Sociology</span>
+                            <span class="tag">Theory</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img" style="background-color: #4a7163;"></div>
+                    <div class="card-content">
+                        <h3>Introduction to Qualitative Methods</h3>
+                        <p class="card-meta">SOC205 | Updated: September 2023</p>
+                        <p>Practical guide to ethnographic research, interviews, and content analysis with examples.</p>
+                        <div class="card-tags">
+                            <span class="tag">Research Methods</span>
+                            <span class="tag">Qualitative</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img" style="background-color: #b89d5a;"></div>
+                    <div class="card-content">
+                        <h3>Self-Study: Data Visualization with R</h3>
+                        <p class="card-meta">Personal Project | Ongoing</p>
+                        <p>Learning journey through ggplot2, Shiny apps, and effective communication of research findings.</p>
+                        <div class="card-tags">
+                            <span class="tag">R Programming</span>
+                            <span class="tag">Data Visualization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 John Doe. All rights reserved.</p>
+        <div class="container">
+            <div class="footer-content">
+                <h3>Get in Touch</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+                <p>Email: alex.chen@connect.hku.hk</p>
+                <p class="copyright">&copy; 2023 Alex Chen. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add shadow to navbar on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 10) {
+                nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+            }
+        });
+    </script>
 </body>
 </html>
